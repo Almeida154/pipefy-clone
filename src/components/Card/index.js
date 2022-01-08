@@ -1,14 +1,16 @@
 import React from 'react';
 import { Container, Label } from './styles';
 
-function Card() {
+function Card({ data }) {
   return (
     <Container>
       <header>
-        <Label color="#7159c1" />
+        {data.labels.map((label, index) => (
+          <Label key={index} color={label} />
+        ))}
       </header>
-      <p>Fazer migração completa de servidor</p>
-      <img src={require('../../assets/img/mdchefe.png')} alt="" />
+      <p>{data.content}</p>
+      {data.user && <img src={data.user} alt="" />}
     </Container>
   );
 }
